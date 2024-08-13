@@ -1,60 +1,72 @@
 // Options
 import css from "./Options.module.css"
 import { useState, useEffect } from "react";
-export default function Button() {
+export default function Options() {
     const [values, setValues] = useState({
-        x: 0,
-        y: 0,
-        z: 0
+        good: 0,
+        neutral: 0,
+        bad: 0
     });
-    const [total, setTotal] = useState(0);
-    useEffect(() => {
-        console.log("You can see me only once!");
-    }, []);
     const updateX = () => {
         setValues({
             ...values,
-            x: values.x + 1
+            good: values.good + 1
         });
     };
     const updateY = () => {
         setValues({
             ...values,
-            y: values.y + 1
+            neutral: values.neutral + 1
         });
     };
     const updateZ = () => {
         setValues({
             ...values,
-            z: values.z + 1
+            bad: values.bad + 1
         });
     };
     const updateTotal = () => {
         setValues({
             ...values,
-            total: values.x + values.y + values.z,
+            total: values.good + values.neutral + values.bad,
         });
     };
+    const resetClick = () => { setValues(0) };
 
     return (
-        <div>
-            <button onClick={updateX}>Good x</button>
-            <button onClick={updateY}>Neutral y</button>
-            <button onClick={updateZ}>Bad z</button>
-            <button onClick={updateTotal}></button>
-            {/* <button onClick={updatePositive}></button> */}
-            {/* <button onClick={() => setTotal(x + y + z)}>Total: {total}</button> */}
 
-            <p>x: {values.x} </p>
-            <p>y: {values.y}</p>
-            <p>z: {values.z}</p>
-            <p>Total: {values.x + values.y + values.z}</p>
+        <div>
+            <button onClick={updateX} className={css.button}>Good </button>
+            <button onClick={updateY} className={css.button}>Neutral </button>
+            <button onClick={updateZ} className={css.button}>Bad </button>
+            <button onClick={resetClick} className={css.button}>Reset</button>
+            <button onClick={updateTotal} ></button>
+
+
+            <p>Good: {values.good} </p>
+            <p>Neutral: {values.neutral}</p>
+            <p>Bad: {values.bad}</p>
+            <p>Total: {values.good + values.neutral + values.bad}  </p>
             {/* <p>Positive: {positive}</p> */}
 
         </div>
     );
 }
 
+// className={css.button}
+// const [clicks] = useState(0);
+
+// useEffect(() => {
+//     console.log("You can see me only once!");
+// }, []);
+
+// useEffect(() => {
+//     console.log("Clicks updated: ", clicks);
+// }, [clicks]);
+
+// useEffect(() => {
+//     document.title = `You clicked ${clicks} times`;
+// });
 // export default function Options(
 //     { updateFeedback, totalFeedback }
 // ) {

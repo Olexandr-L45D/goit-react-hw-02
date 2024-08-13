@@ -18,3 +18,9 @@ export default function App() {
     </div>
   )
 }
+// стан для зберігання відгуків в АПП
+// const [values, setValues] = useState({
+//   good: 0,
+//   neutral: 0,
+//   bad: 0
+// });
