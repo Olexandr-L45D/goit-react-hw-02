@@ -4,17 +4,17 @@ import { useState, useEffect } from "react";
 export default function Feedback(
     // { values }
 ) {
-    let [values] = useState({
+    let [values, option] = useState({
         good: 0,
         neutral: 0,
         bad: 0
     });
     return (
         <>
-            <p className={css.paragrText}>Good: {values.good}</p>
+            <p className={css.paragrText}>Good: {values.good} </p>
             <p className={css.paragrText}>Neutral: {values.neutral}</p>
             <p className={css.paragrText}>Bad: {values.bad}</p>
-            <p className={css.paragrText}>Total: {values.good + values.neutral + values.bad}</p>
+
         </>
     )
 }

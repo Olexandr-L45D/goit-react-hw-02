@@ -7,12 +7,12 @@ import Feedback from "../Feedback/Feedback"
 import Notification from "../Notification/Notification"
 
 export default function App() {
-  let [values, setValues] = useState({
+  const [values, option, setValues] = useState({
     good: 0,
     neutral: 0,
     bad: 0
   });
-  // const totalFeedback = good + neutral + bad;
+  const totalFeedback = values.good + values.neutral + values.bad;
   return (
     <div className={css.container}>
 
@@ -22,7 +22,7 @@ export default function App() {
         <Description />
         <Notification />
         <Options />
-        <Feedback />
+        <Feedback><p className={css.paragrText}>Total: {totalFeedback}</p></Feedback>
 
       </>
     </div>
