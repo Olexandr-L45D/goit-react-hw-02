@@ -4,13 +4,6 @@ import { useState, onFeedback } from "react";
 export default function Options(
     { values, setValues }
 ) {
-
-    // let [values, option, setValues] = useState({
-    //     good: 0,
-    //     neutral: 0,
-    //     bad: 0
-    // });
-
     const onFeedback = (option) => {
         setValues({
             ...values,

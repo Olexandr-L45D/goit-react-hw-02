@@ -2,13 +2,9 @@
 import css from "./Feedback.module.css"
 import { useState, useEffect } from "react";
 export default function Feedback(
-    // { values }
+    { values, setValues }
 ) {
-    let [values, option] = useState({
-        good: 0,
-        neutral: 0,
-        bad: 0
-    });
+
     return (
         <>
             <p className={css.paragrText}>Good: {values.good} </p>
