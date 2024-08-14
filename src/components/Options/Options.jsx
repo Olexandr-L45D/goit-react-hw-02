@@ -1,6 +1,7 @@
 // Options
 import css from "./Options.module.css"
 import { useState, useEffect } from "react";
+import Notification from "../Notification/Notification"
 export default function Options() {
     const [values, setValues] = useState({
         good: 0,
@@ -32,16 +33,29 @@ export default function Options() {
         });
     };
     const resetClick = () => { setValues(0) };
+    // second example
+    const handleClick = (evt) => {
+        console.log(evt);
+    };
 
     return (
+        <>
+            {/* second example */}
+            <button onClick={handleClick}>First button</button>
+            <button onClick={evt => console.log(evt)}>Second button</button>
 
-        <div>
-            <button onClick={updateX} className={css.button}>Good </button>
-            <button onClick={updateY} className={css.button}>Neutral </button>
-            <button onClick={updateZ} className={css.button}>Bad </button>
-            <button onClick={resetClick} className={css.button}>Reset</button>
-            <button onClick={updateTotal} ></button>
-        </div>
+            <Notification />
+
+            <div>
+                <button onClick={updateX} className={css.button}>Good </button>
+                <button onClick={updateY} className={css.button}>Neutral </button>
+                <button onClick={updateZ} className={css.button}>Bad </button>
+                <button onClick={resetClick} className={css.button}>Reset</button>
+                <button onClick={updateTotal} ></button>
+
+            </div>
+
+        </>
     );
 }
 
