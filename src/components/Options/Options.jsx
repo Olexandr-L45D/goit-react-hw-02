@@ -41,17 +41,10 @@ export default function Options() {
             <button onClick={updateZ} className={css.button}>Bad </button>
             <button onClick={resetClick} className={css.button}>Reset</button>
             <button onClick={updateTotal} ></button>
-
-
-            <p>Good: {values.good} </p>
-            <p>Neutral: {values.neutral}</p>
-            <p>Bad: {values.bad}</p>
-            <p>Total: {values.good + values.neutral + values.bad}  </p>
-            {/* <p>Positive: {positive}</p> */}
-
         </div>
     );
 }
+
 
 // className={css.button}
 // const [clicks] = useState(0);
@@ -86,3 +79,4 @@ export default function Options() {
 //             </button>
 //         </div>)
 // }
+//  {/* <p>Positive: {positive}</p> */}
