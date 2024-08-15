@@ -1,8 +1,8 @@
 // Feedback
 import css from "./Feedback.module.css"
-import { useState, useEffect } from "react";
+import { useState } from "react";
 export default function Feedback(
-    { values, setValues }
+    { good, neutral, bad }
 ) {
 
     return (

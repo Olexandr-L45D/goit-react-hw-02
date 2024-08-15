@@ -1,32 +1,30 @@
 // Options
-import css from "./Options.module.css"
-import { useState, onFeedback } from "react";
-export default function Options(
-    { values, setValues }
-) {
-    const onFeedback = (option) => {
-        setValues({
-            ...values,
-            option: values[option] + 1
-        });
-    }
-    const resetClick = () => { setValues(0) };
 
-    return (
-        <>
+// import css from "./Options.module.css"
+// import { useState, onFeedback } from "react";
+// export default function Options(
+//     { values, setValues }
+// ) {
+//     const onFeedback = (option) => {
+//         setValues({
+//             ...values,
+//             option: values[option] + 1
+//         });
+//     }
+//     const resetClick = () => { setValues(0) };
 
-            <div>
-                <button onClick={onFeedback} value={values} className={css.button}>Good </button>
-                <button onClick={onFeedback} className={css.button}>Neutral </button>
-                <button onClick={onFeedback} className={css.button}>Bad </button>
-                <button onClick={resetClick} className={css.button}>Reset</button>
+//     return (
+//         <>
+//             <div>
+//                 <button onClick={() => onFeedback("good")} className={css.button}>Good </button>
+//                 <button onClick={() => onFeedback("neutral")} className={css.button}>Neutral </button>
+//                 <button onClick={() => onFeedback("bad")} className={css.button}>Bad </button>
+//                 <button onClick={resetClick} className={css.button}>Reset</button>
+//             </div>
 
-
-            </div>
-
-        </>
-    );
-}
+//         </>
+//     );
+// }
 
 
 // className={css.button}
@@ -63,3 +61,9 @@ export default function Options(
 //         </div>)
 // }
 //  {/* <p>Positive: {positive}</p> */}
+
+export default function Options() {
+    return (
+        <div>Hello</div>
+    )
+}
