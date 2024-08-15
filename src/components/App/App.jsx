@@ -1,68 +1,49 @@
 
 import css from './App.module.css'
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Description from "../Description/Description"
 import Options from "../Options/Options"
-//import Feedback from "../Feedback/Feedback"
+import Feedback from "../Feedback/Feedback"
 import Notification from "../Notification/Notification"
 
 export default function App() {
-  const [values, setValues] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0
+  const [values, setValues] = useState(() => {
+    const savClicks = window.localStorage.getItem("m-click");
+    return savClicks !== null ? JSON.parse(savClicks) : {
+      good: 0,
+      neutral: 0,
+      bad: 0
+    };
   });
-  const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-  const openOption = () => setIsOptionsOpen(false);
-
-  // console.log(setTimeout(openOption, 2000));
-
-  // useEffect(() => {
-  // }, []); 
 
   useEffect(() => {
-    console.log("Clicks updated: ", openOption);
-  }, [openOption]);
+    window.localStorage.setItem("m-click", JSON.stringify(values));
+  }, [values]);
 
-
-  const onFeedback = (option) => {
+  const updateFeedback = (option) => {
     setValues({
       ...values,
       [option]: values[option] + 1
     });
   }
 
+  const resetValue = () => {
+    setValues({
+      good: 0,
+      neutral: 0,
+      bad: 0
+    })
+  }
   const totalFeedback = values.good + values.neutral + values.bad;
+  const positiveFeedback = Math.round((values.good / totalFeedback) * 100);
+
   return (
     <div className={css.container}>
-
       <>
-        {/* <>{totalFeedback > 0 ? <Feedback /> : <Notification />}</> */}
-
         <Description />
-        {isOptionsOpen && <Notification onClose={openOption} />}
-
-        <>
-          <button onClick={() => onFeedback("good")} className={css.button} >Good </button>
-          <button onClick={() => onFeedback("neutral")} className={css.button}>Neutral </button>
-          <button onClick={() => onFeedback("bad")} className={css.button}>Bad </button>
-          <button onClick={() => setValues(0)} className={css.button}>Reset</button>
-
-          <p className={css.paragrText}>Good: {values.good} </p>
-          <p className={css.paragrText}>Neutral: {values.neutral}</p>
-          <p className={css.paragrText}>Bad: {values.bad}</p>
-          <p className={css.paragrText}>Total: {totalFeedback}</p>
-        </>
-        {/* <Options /> */}
-        {/* <Feedback><p className={css.paragrText}>Total: {totalFeedback}</p></Feedback> */}
-
+        <Options updateFeedback={updateFeedback} resetValue={resetValue} totalFeedback={totalFeedback} />
+        {totalFeedback > 0 ? <Feedback values={values} positiveFeedback={positiveFeedback} totalFeedback={totalFeedback} /> : <Notification />}
       </>
     </div>
   )
 }
-// стан для зберігання відгуків в АПП
-// const [values, setValues] = useState({
-//   good: 0,
-//   neutral: 0,
-//   bad: 0
-// });
